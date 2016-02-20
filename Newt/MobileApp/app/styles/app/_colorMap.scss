@@ -1,0 +1,114 @@
+//Color palette
+$colorpalette:(
+  lavender: (
+    base: rgb(198,145,195),
+    shade: rgb(172,108,173),
+    tint:rgb(233,204,226)
+  ),
+
+  purple: (
+    base:rgb(102,74,158),
+    shade: rgb(84,61,152),
+    tint: rgb(209,196,225)
+  ),
+
+  blue: (
+    base: rgb(72,143,204),
+    shade:rgb(53,117,187),
+    tint:rgb(190,221,244)
+  ),
+
+  turquoise: (
+    base: rgb(86,193,174),
+    shade: rgb(71,162,146),
+    tint: rgb(177,222,215),
+  ),
+
+  green: (
+    base:rgb(140,195,73),
+    shade: rgb(104,160,66),
+    tint:rgb(220,236,200)
+  ),
+
+  yellow: (
+    base: rgb(253,193,19),
+    shade:rgb(249,160,27),
+    tint:rgb(255,236,179)
+  ),
+
+  orange: (
+    base: rgb(248,152,29),
+    shade:(244,125,32),
+    tint:(255,224,178)
+  ),
+
+  red: (
+    base: rgb(239,69,56),
+    shade: rgb(212,47,47),
+    tint: rgb(246,151,148)
+  ),
+
+  pink: (
+    base: rgb(239,80,128),
+    shade:rgb(208,68,112),
+    tint:rgb(251,217,226)
+  ),
+
+  ntp-green:(
+    base: rgb(77,175,79),
+    shade:rgb(57,143,67),
+    tint:rgb(200,229,201)
+  ),
+
+  neutral:(
+    base: rgb(66,84,98),
+    "grey": rgb(209,211,212),
+    "beige": rgb(244,244,242),
+    taupe: rgb(211,206,186)
+  )
+);
+
+//Usage allows setcolor(pink, shade) or just setcolor(pink)
+@function setcolor($scheme, $tone: base) {
+  @return map_get(map-get($colorpalette, $scheme), $tone);
+}
+
+
+/********************************************
+  Create classes for each color
+  Usage is .color--pink or .color--pink--shade
+
+  For override classes usage is:
+  .color-o--pink or .color-o--pink--shade
+*********************************************/
+
+//Loop through each color object
+@each $color, $color-object in $colorpalette{
+  //Create a base class css value that doesn't require --base to be appended
+  .color--#{$color}{
+    color: map-get($color-object, base);
+  }
+
+  //Loop through each rgb value in a color object
+  @each $shade, $rgb in $color-object{
+    .color--#{$color}--#{$shade}{
+      color:$rgb;
+    }
+  }
+}
+
+//Create override color classes
+//Loop through each color object
+@each $color, $color-object in $colorpalette{
+  //Create a base class css value that doesn't require --base to be appended
+  .color-o--#{$color}{
+    color: map-get($color-object, base) !important;
+  }
+
+  //Loop through each rgb value in a color object
+  @each $shade, $rgb in $color-object{
+    .color-o--#{$color}--#{$shade}{
+      color:$rgb !important;
+    }
+  }
+}

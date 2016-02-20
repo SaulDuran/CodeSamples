@@ -1,0 +1,87 @@
+// Newtopia Color Palette defined: https://wiki.newtopia.com/display/UD/UI+Color+Palette
+
+@function color-generator-function($base-color-code, $color-change-percentage){
+  @return (
+    "lighten-5":  lighten($base-color-code, $color-change-percentage*5),
+    "lighten-4":  lighten($base-color-code, $color-change-percentage*4),
+    "lighten-3":  lighten($base-color-code, $color-change-percentage*3),
+    "lighten-2":  lighten($base-color-code, $color-change-percentage*2),
+    "lighten-1":  lighten($base-color-code, $color-change-percentage),
+    "base":       $base-color-code,
+    "darken-1":   darken($base-color-code, $color-change-percentage),
+    "darken-2":   darken($base-color-code, $color-change-percentage*2),
+    "darken-3":   darken($base-color-code, $color-change-percentage*3),
+    "darken-4":   darken($base-color-code, $color-change-percentage*4),
+    "darken-5":   darken($base-color-code, $color-change-percentage*5)
+  );
+}
+
+$shades: (
+  "black":      #000000,
+  "white":      #FFFFFF
+);
+
+$default-color-change-percentage: 5%;
+
+$colors: (
+  "red": color-generator-function(#ef4538, $default-color-change-percentage),
+  "pink": color-generator-function(#ef5080, $default-color-change-percentage),
+  "purple": color-generator-function(rgb(86,193,174), $default-color-change-percentage),
+  "blue": color-generator-function(#488fcc, $default-color-change-percentage),
+  "teal": color-generator-function(#56c1ae, $default-color-change-percentage),
+  "green": color-generator-function(#8cc349, $default-color-change-percentage),
+  "yellow": color-generator-function(#fdc113, $default-color-change-percentage),
+  "orange": color-generator-function(#f8981d, $default-color-change-percentage),
+  "grey": color-generator-function(#d1d3d4, $default-color-change-percentage),
+  "shades": $shades
+);
+
+
+// Color Classes
+
+@each $color_name, $color in $colors {
+  @each $color_type, $color_value in $color {
+    @if $color_type == "base" {
+      .#{$color_name} {
+        background-color: $color_value !important;
+      }
+      .#{$color_name}-text {
+        color: $color_value !important;
+      }
+    }
+    @else {
+      .#{$color_name}.#{$color_type} {
+        background-color: $color_value !important;
+      }
+      .#{$color_name}-text.text-#{$color_type} {
+        color: $color_value !important;
+      }
+    }
+  }
+}
+
+// Shade classes
+@each $color, $color_value in $shades {
+  .#{$color} {
+    background-color: $color_value !important;
+  }
+  .#{$color}-text {
+    color: $color_value !important;
+  }
+}
+
+
+// usage: color("name_of_color", "type_of_color")
+// to avoid to repeating map-get($colors, ...)
+
+@function color($color, $type) {
+  @if map-has-key($colors, $color) {
+    $curr_color: map-get($colors, $color);
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  }
+  @warn "Unknown `#{name}` in $colors.";
+  @return null;
+}
+

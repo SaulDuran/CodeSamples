@@ -1,0 +1,15 @@
+/******************************************************************
+ * FoodItem component style
+ ******************************************************************/
+
+.food-item{
+	.calories-section{
+		text-align: right;
+	}
+	.ntp-pull-right{
+		 @include vertical-align;
+	}
+}
+.food-item.ntp-list-item{
+	padding: 20px 20px 8px 20px;
+}

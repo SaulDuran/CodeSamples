@@ -1,0 +1,481 @@
+@import "colorMap";
+@import "fontMap";
+
+*{
+  box-sizing: border-box;
+}
+
+body,html {
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+body {
+  background: $color_app_body;
+  font-family: 'Roboto', sans-serif;
+  color: $color_text_primary;
+}
+
+.App{
+  height:100%
+}
+
+
+#app_container{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  box-sizing: border-box;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  /* -webkit-overflow-scrolling: touch; */
+}
+
+.app-main{
+  padding-bottom: 90px;
+  padding-top: 90px;
+}
+
+
+.hero-unit {
+  margin: 50px auto 0 auto;
+  //  width: 300px;
+  width:100%;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: $standard_border_radius;
+  padding: 40px;
+  h1 {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+}
+.dashboard{
+
+}
+
+.dashboard_item{
+  border:1px solid indigo;
+}
+
+
+.inner{
+  box-sizing: border-box;
+  padding: $standard_padding;
+}
+
+.inner p{
+  margin: 5px 8px 8px 8px;
+}
+
+/***********Style Guide implementations **************/
+
+.secondary-header{
+  padding: 20px !important;
+
+  @extend .text--large;
+
+  border-bottom: 1px solid setcolor('neutral','grey');
+}
+
+
+.ntp-pull-right{
+  float:right;
+}
+
+.ntp-list-item-component{
+ display:inline-block;
+}
+
+.ntp-flat-list-item {
+  width:100%;
+}
+
+.card_button{
+  white-space: nowrap;
+  text-align: center;
+  width:100%;
+
+  .mui-paper.mui-z-depth-1 {
+    width: 100% !important;
+    border-radius: 0;
+    height:60px !important;
+  }
+
+  .mui-paper.mui-z-depth-2 {
+    width: 100% !important;
+    border-radius: 0;
+    height:60px !important;
+  }
+
+  .mui-paper.mui-rounded > .mui-paper-container {
+    border-radius: 0;
+  }
+
+  .mui-raised-button.mui-is-primary .mui-raised-button-container {
+    border-radius: 0;
+  }
+
+  .mui-raised-button{
+    border-right:1px solid #fff;
+    border-left:1px solid #fff;
+  }
+}
+
+
+
+.ntp-hover-item{
+  -webkit-tap-highlight-color: $app_newtopia_grey;
+
+  &:hover {
+    background-color: $app_newtopia_grey;
+    cursor: pointer;
+  }
+}
+
+
+/****Bug fixes, move somewhere else****/
+
+
+.triangle{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  display:inline-block;
+}
+
+.triangle.right{
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent $primary-color;
+}
+
+.triangle.down{
+  border-width: 10px 5px 0 5px;
+  border-color: $primary-color transparent transparent transparent;
+}
+
+.hidden{
+  display:none;
+}
+
+.icon-button{
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+/**Material ui overrides***/
+.mui-tabs-container .mui-tab-item-container {
+  background-color: $app_newtopia_white !important;
+  color: setcolor(turquoise, shade) !important;
+}
+
+.mui-ink-bar {
+  background-color: setcolor(turquoise, shade) !important;
+}
+
+.mui-tabs-container .mui-tab-item-container .mui-tab-item.mui-tab-is-active {
+  color: setcolor(turquoise, shade) !important;
+  font-weight: setfont(weight,bold);
+}
+
+.mui-tabs-container .mui-tab-item-container .mui-tab-item {
+  color: setcolor(green) !important;
+  border-bottom: 1px solid $ntp_font_grey;
+  font-size: setfont(size,medium) !important;
+  font-weight:  setfont(weight,thin);
+  text-transform: capitalize;
+}
+
+.card_datepicker .datePicker_control_prev, .card_datepicker .datePicker_control_next{
+  font-size: 14px !important;
+  padding: 10px 16px !important;
+}
+
+.card_datepicker .datepicker_icon{
+  font-size: 14px !important;
+  padding: 10px !important;
+}
+
+
+.card_datepicker .mui-date-picker .mui-text-field-input {
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  padding-right: 19px !important;
+  z-index: 9;
+}
+
+.card_datepicker .mui-date-picker .mui-text-field {
+  width: 125px !important;
+}
+
+.waterPopup {
+  .mui-dialog-content {
+    .ntp-card {
+      margin: 0 !important;
+    }
+  }
+
+  .mui-dialog-window .mui-dialog-window-actions {
+    padding: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: right;
+    display: none !important;
+  }
+
+  .mui-dialog .mui-dialog-title {
+    padding: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .mui-dialog .mui-dialog-content {
+    padding: 0 !important;
+  }
+
+  .lessonButton-text {
+    color: $primary-color;
+    text-transform: uppercase;
+  }
+}
+
+/****Hide input arrows globally*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+          /* display: none; <- Crashes Chrome on hover */
+          -webkit-appearance: none;
+          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+
+.ntp-header{
+  font-size: 130%;
+  font-weight: normal;
+  font-weight: 600;
+}
+
+
+
+.icon-base {
+  font-family: 'nt-fonts';
+  font-size: 26px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-center{
+  font-size: 60px;
+  text-shadow: 2px 2px 5px #CCC;
+}
+
+
+@media screen and ( max-width: 320px ){
+  .card_button{
+    white-space: nowrap;
+  }
+}
+
+@media screen and ( max-height: 479px ){
+  .hide-on-keyboard{
+    display:none;
+  }
+}
+
+@media screen and ( max-height: 600px ){
+  .logo-background{
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+#wheelnavcontroller {
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.rotated45{
+  transform: rotate(45deg)
+}
+
+.newt_header_bar {
+  width: 100%;
+  height: 15px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.page-container{
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.page-enter {
+  -webkit-transform: translate3d(100%, 0, 1px);
+  transform: translate3d(100%, 0, 0);
+  position: absolute;
+  width:100%;
+  height:1000%;
+}
+
+.page-enter.page-enter-active {
+  -webkit-transform: translate3d(0, 0, 1px);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition-duration: .45s;
+  transition-duration: .45s;
+  height:1000%;
+}
+
+.page-leave {
+}
+
+.page-leave.page-leave-active {
+  -webkit-transform: translate3d(-100%, 0, 1px);
+  transform: translate3d(-100%, 0, 0);
+  -webkit-transition-duration: .45s;
+  transition-duration: .45s;
+}
+.textindent{
+  padding:7px;
+  font-size: 14px;
+}
+
+.ac {text-align: center}
+.pb {padding-bottom: 7px}
+.dpb {padding-bottom: 14px}
+.pt {padding-top: 7px}
+.dpt {padding-top: 14px}
+.r {float:right}
+
+.ntp-container{
+/*
+  max-width:1024px;
+*/
+  max-width:884px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.no-datepicker{
+  margin-top: -25px;
+}
+
+.input-style{
+  border: 0px solid;
+  text-align:center;
+  border-bottom: 1px solid setcolor(turquoise);
+  width:80%;
+}
+.label-text{
+  @extend .text--medium;
+}
+
+.newtopia-logout-btn span {
+	top: -6px;
+}
+
+.app-version {
+	font-size: 9px;
+	padding-left: 7px;
+}
+
+
+.quotebox{
+  padding:30px;
+  @extend .text--mega;
+  color: #fff;
+  text-align:center;
+}
+
+
+.pull-right{
+  float:right;
+  text-align:right;
+
+}
+
+::-webkit-input-placeholder {
+  color: red !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: red !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: red !important;
+}
+
+:-ms-input-placeholder {
+  color: red !important;
+}
+
+.ntp-list-item{
+  padding: 8px 20px;
+  width: 100%;
+  @extend .text--medium;
+  font-weight: setfont(weight, thin);
+}
+
+
+.ntp-list-item .ntp-small-text{
+  @extend .text--mini;
+  font-size: setfont(size, mini) !important;
+  color: setcolor(turquoise, shade);
+}
+
+.card_input .mui-text-field input {
+  border: 0px solid #b4b4b4 !important;
+
+  border-bottom: 1px solid setcolor(turquoise, shade) !important;
+}
+
+
+.genetics{padding:20px;
+  @extend .text--medium;color:setcolor(turquoise, shade);
+  font-weight: setfont(weight, thin) !important;
+}
+
+
+.mui-raised-button .mui-raised-button-container {
+  height: 100%;}
+
+
+.ntp-button-punched-out{
+  @extend .login-button;
+  border: 1px solid setcolor(turquoise,shade);
+  color: setcolor(turquoise, shade) !important;
+  border-radius:$app_border_radius;
+  padding:10px;
+  background-color:#fff !important;
+  cursor:pointer;
+}
+
+.ntp-button-punched-out:hover {
+  color: #fff !important;
+  background-color:setcolor(turquoise,shade) !important;
+}
+
+.mui-text-field input{
+  @extend .text---medium;
+  font-size: setfont(size, medium) !important;
+  color: setcolor(turquoise, shade) !important;
+
+}
+
+input{
+  @extend .text---medium;
+  font-size: setfont(size, medium) !important;
+  color: setcolor(turquoise, shade) !important;
+}

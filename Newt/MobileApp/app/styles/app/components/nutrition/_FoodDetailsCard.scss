@@ -1,0 +1,130 @@
+/******************************************************************
+ * FoodDetailsCard component style
+ * Auto-Generated on Wed Apr 08 2015
+ * Wireframe: https://projects.invisionapp.com/d/main#/console/3206033/70966465/preview
+ ******************************************************************/
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1025px) {
+	.food_details_card{
+		.food_details_graph{
+			width: 50%;
+	        margin: 0 auto;
+	    }
+	}
+}
+
+.amount-label{
+  font-weight: setfont(weight,thin);
+  padding-top:20px;
+  padding-bottom:20px;
+  text-align:center;
+  color: setcolor(green);
+}
+
+.nutrition-info-label{
+  font-weight: setfont(weight,thin);
+  	> span,
+  	> div{
+  		cursor: pointer !important;
+  	}
+}
+
+.quantity-container{
+  max-width:200px;
+  margin:auto;
+
+  .input-style{
+    width:100px;
+  }
+
+
+
+}
+
+.food_details_card{
+	
+   .amount-label:first-child, 
+   .quantity-container{
+		display: inline-block;
+	}
+  .amount-label:first-child{ margin-right: 15px;}	
+  .label-text{
+    font-weight: setfont(weight,thin);
+  }
+
+  .view{
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 18px;
+	padding: 30px;
+
+	.triangle.right {
+	  border-width: 6px 0px 6px 10px;
+	}
+  }
+
+
+
+  .header-text{
+	text-align: center;
+	font-size: 30px;
+	padding: 20px 0px 10px;
+  }
+
+  .indicators{
+	text-align: center;
+	font-size: 12px;
+  }
+
+  svg{
+	display: block;
+	margin: auto;
+  }
+
+  .change-amount{
+
+	display: table;
+	margin: 0 auto;
+
+	.amount-label{
+	  position: relative;
+	  margin-top: 20px;
+	  margin-bottom: 5px;
+	}
+
+	.amount-tbox{
+	  position: relative;
+	}
+
+	label{
+	  color: setcolor(purple);
+	  font-size: 14px;
+	}
+
+	.mui-text-field{
+	  width: 150px;
+	}
+
+	input{
+	  border: 0px solid #dadada !important;
+	  width: 150px;
+	  padding-left: 10px;
+	}
+
+	.serving{
+	  color: #666;
+	}
+
+
+  }
+
+
+}
+
+ @media (max-device-width: 640px) {
+
+  .mui-raised-button-label{
+	font-size: 18px !important;
+  }
+}
+

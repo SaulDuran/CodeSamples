@@ -1,0 +1,83 @@
+//Font map
+$fonts:(
+  mega:(
+    color: setcolor(ntp-green),
+    family: ('Roboto', sans-serif),
+    weight: 100,
+    size: 40px,
+    line-height: 40px
+  ),
+  large:(
+    color: setcolor(ntp-green),
+    family: ('Roboto', sans-serif),
+    weight: 300,
+    size: 24px,
+    line-height: 24px
+  ),
+  medium: (
+    color: setcolor(ntp-green),
+    family: ('Roboto', sans-serif),
+    weight: 400,
+    size: 20px,
+    line-height: 22px
+  ),
+  small: (
+    color: setcolor(turquoise, shade),
+    family: ('Roboto', sans-serif),
+    weight: 100,
+    size: 16px,
+    line-height: 16.61px
+  ),
+  mini: (
+    color: setcolor(green, shade),
+    family: ('Roboto', sans-serif),
+    weight: 100,
+    size: 12px,
+    line-height: 12.61px
+  ),
+  feature: (
+    color: setcolor(turquoise, shade),
+    family: ('Roboto', sans-serif),
+    weight: 100,
+    size: 40px,
+    line-height: 40px
+  ),
+  thin: (
+    weight: 100,
+  ),
+  bold: (
+    weight: 400
+  )
+);
+
+//Usage allows setfont(large, weight) or just setfont(weight)
+@function setfont($property, $size: small) {
+  @return map-get(map-get($fonts, $size), $property);
+}
+
+
+/********************************************
+  Create classes for each font
+  Usage is .font--small or .font--large
+*********************************************/
+//Base font classes derived from font map
+//Loop through each font type in the map, generating a class for each of them
+@each $font, $font-object in $fonts{
+  .text--#{$font}{
+    color: map-get($font-object, color);
+    font-family: map-get($font-object, family);
+    font-weight: map-get($font-object, weight);
+    font-size: map-get($font-object, size);
+    line-height: map-get($font-object, line-height);
+  }
+}
+
+@each $font, $font-object in $fonts{
+  .text---#{$font}{
+    color: map-get($font-object, color);
+    font-family: map-get($font-object, family);
+    font-weight: map-get($font-object, weight);
+    font-size: map-get($font-object, size);
+    line-height: map-get($font-object, line-height);
+  }
+}
